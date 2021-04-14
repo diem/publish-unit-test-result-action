@@ -171,6 +171,7 @@ def get_settings(options: dict) -> Settings:
         report_individual_runs=get_var('REPORT_INDIVIDUAL_RUNS', options) == 'true',
         dedup_classes_by_file_name=get_var('DEDUPLICATE_CLASSES_BY_FILE_NAME', options) == 'true',
         check_run_annotation=annotations,
+        test_case_annotations=get_var('TEST_CASE_ANNOTATIONS', options) != 'false',
         check_compare=get_var('CHECK_COMPARE', options) != 'false',
     )
 

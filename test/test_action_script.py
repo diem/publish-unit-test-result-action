@@ -135,6 +135,7 @@ class Test(unittest.TestCase):
                      report_individual_runs=True,
                      dedup_classes_by_file_name=True,
                      check_run_annotation=[],
+                     test_case_annotations=True,
                      check_compare=True):
         return Settings(
             token=token,
@@ -156,6 +157,7 @@ class Test(unittest.TestCase):
             report_individual_runs=report_individual_runs,
             dedup_classes_by_file_name=dedup_classes_by_file_name,
             check_run_annotation=check_run_annotation.copy(),
+            test_case_annotations=test_case_annotations,
             check_compare=check_compare,
         )
 
