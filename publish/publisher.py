@@ -42,6 +42,7 @@ class Settings:
     report_individual_runs: bool
     dedup_classes_by_file_name: bool
     check_run_annotation: List[str]
+    check_compare: bool
 
 
 class Publisher:
@@ -154,11 +155,14 @@ class Publisher:
 
     def publish_check(self, stats: UnitTestRunResults, cases: UnitTestCaseResults, conclusion: str) -> CheckRun:
         # get stats from earlier commits
-        before_commit_sha = self._settings.event.get('before')
-        logger.debug(f'comparing against before={before_commit_sha}')
-        before_stats = self.get_stats_from_commit(before_commit_sha)
-        stats_with_delta = get_stats_delta(stats, before_stats, 'earlier') if before_stats is not None else stats
-        logger.debug(f'stats with delta: {stats_with_delta}')
+        if self._settings.check_compare:
+            before_commit_sha = self._settings.event.get('before')
+            logger.debug(f'comparing against before={before_commit_sha}')
+            before_stats = self.get_stats_from_commit(before_commit_sha)
+            stats_with_delta = get_stats_delta(stats, before_stats, 'earlier') if before_stats is not None else stats
+            logger.debug(f'stats with delta: {stats_with_delta}')
+        else:
+            stats_with_delta = stats
 
         error_annotations = get_error_annotations(stats.errors)
         case_annotations = get_case_annotations(cases, self._settings.report_individual_runs)

@@ -61,7 +61,8 @@ class TestPublisher(unittest.TestCase):
             hide_comment_mode=hide_comment_mode,
             report_individual_runs=report_individual_runs,
             dedup_classes_by_file_name=dedup_classes_by_file_name,
-            check_run_annotation=check_run_annotation
+            check_run_annotation=check_run_annotation,
+            check_compare=True
         )
 
     stats = UnitTestRunResults(

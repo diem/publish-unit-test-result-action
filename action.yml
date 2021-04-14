@@ -51,6 +51,10 @@ inputs:
   check_run_annotations_branch:
     description: 'Adds check run annotations only on given branches. If not given, this defaults to the default branch of your repository, e.g. main or master. Comma separated list of branch names allowed, asterisk "*" matches all branches.'
     required: false
+  check_compare:
+    description: 'Compare against previous commit in check results'
+    required: false
+    default: 'true'
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/enricomi/publish-unit-test-result-action:v1.11'

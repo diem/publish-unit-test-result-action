@@ -134,7 +134,8 @@ class Test(unittest.TestCase):
                      hide_comment_mode='off',
                      report_individual_runs=True,
                      dedup_classes_by_file_name=True,
-                     check_run_annotation=[]):
+                     check_run_annotation=[],
+                     check_compare=True):
         return Settings(
             token=token,
             api_url=api_url,
@@ -154,7 +155,8 @@ class Test(unittest.TestCase):
             hide_comment_mode=hide_comment_mode,
             report_individual_runs=report_individual_runs,
             dedup_classes_by_file_name=dedup_classes_by_file_name,
-            check_run_annotation=check_run_annotation.copy()
+            check_run_annotation=check_run_annotation.copy(),
+            check_compare=check_compare,
         )
 
     def test_get_settings(self):
@@ -284,6 +286,7 @@ class Test(unittest.TestCase):
                 HIDE_COMMENTS='off',  # defaults to 'all but latest'
                 REPORT_INDIVIDUAL_RUNS='true',  # false unless 'true'
                 DEDUPLICATE_CLASSES_BY_FILE_NAME='true',  # false unless 'true'
+                CHECK_COMPARE='true',  # true unless 'false'
                 # annotations config tested in test_get_annotations_config*
             )
             options.update(**kwargs)
