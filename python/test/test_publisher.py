@@ -1202,6 +1202,7 @@ class TestPublisher(unittest.TestCase):
         publisher = mock.MagicMock(Publisher)
         publisher._settings = settings
         publisher._req = mock.MagicMock()
+        raise Exception("TEST")
         publisher._req.requestJsonAndCheck = mock.Mock(
             return_value=({}, {'data': {'minimizeComment': {'minimizedComment': {'isMinimized': True}}}})
         )

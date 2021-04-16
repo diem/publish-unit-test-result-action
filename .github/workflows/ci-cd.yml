@@ -101,6 +101,7 @@ jobs:
         uses: ./
         with:
           check_name: Unit Test Results (Dockerfile)
+          report_individual_runs: true
           files: "artifacts/**/*.xml"
 
   publish-docker-image:
